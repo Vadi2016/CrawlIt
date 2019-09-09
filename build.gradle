@@ -1,0 +1,30 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+repositories {
+    jcenter()
+    mavenCentral()
+
+    maven {
+        url "https://repo.boundlessgeo.com/main/"
+    }
+}
+
+
+
+dependencies {
+    compile 'com.google.guava:guava:18.0'
+
+    compile group: 'edu.uci.ics', name: 'crawler4j', version: '4.3'
+
+    testCompile "junit:junit:4.12"
+}
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': ' DamnSimpleGoogle'
+        )
+    }
+}

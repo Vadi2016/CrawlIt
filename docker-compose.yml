@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+
+
+  pgdb:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: javaCrawlerDb
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
